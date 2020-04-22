@@ -102,3 +102,16 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     FROM Customer 
     WHERE Country = 'USA'; 
     ```
+6. Let's filter it down even more. Maybe we want to see all the Customers from the US and Portland. 
+
+    A. Let's add another command to where the city is Portland by using "and". 
+    
+    B. Split it up for readability.
+    ```
+    SELECT * 
+    FROM Customer 
+    WHERE Country = 'USA'
+    AND City = 'Portland'; 
+    ```
+
+    C. The results show 2 customers in Portland. 
