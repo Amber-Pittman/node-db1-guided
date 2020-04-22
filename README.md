@@ -42,7 +42,8 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     ```
     SELECT email 
     FROM users
-    WHERE name = 'Amber Pittman';```
+    WHERE name = 'Amber Pittman';
+    ```
 
 # Code Along
 1. Open DB Browser for SQL Lite. 
@@ -81,7 +82,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     A. If you run that code, it will return all 13 customers in the US.
 
     B. Let's split it up for readability.
-        ```
-        SELECT * 
+        ```SELECT * 
         FROM Customer 
-        WHERE Country = 'USA'; ```
+        WHERE Country = 'USA'; 
+        ```
