@@ -82,7 +82,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     A. If you run that code, it will return all 13 customers in the US.
 
     B. Let's split it up for readability.
-        ```SELECT * 
-        FROM Customer 
-        WHERE Country = 'USA'; 
-        ```
+    ```SELECT * 
+    FROM Customer 
+    WHERE Country = 'USA'; 
+    ```
