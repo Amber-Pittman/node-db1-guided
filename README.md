@@ -161,3 +161,36 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     FROM 'Order' 
     WHERE Id = 19570; 
     ```
+    5. If you run the code with the quotes, your result should show the ShippedDate information on that one order. 
+12. Because of the issue with table names and SQL commands, it's good practice to wrap any of your values (such as the table names) in double quotes. String values can have single quotes. Numbers do not need to be wrapped in quotes.
+    ```
+    SELECT "ShippedDate"
+    FROM "Order"
+    WHERE Id = 19570; // the place where the number assigned would take single quotes if it were a string
+    ```
+13. Instead of doing just a strict equality check, in our where statement, we can actually use other operators. For example, you can use greater than or less than symbols.
+    
+    A. Go back to Browse Data
+
+    B. Go to Product table
+
+    C. You'll see a lot of tables for products. 
+
+    D. Scenario: you want to all of our products with a UnitsInStock that's greater than 100. 
+    ```
+    SELECT *
+    FROM "Product"
+    WHERE "UnitsInStock" >= 100; 
+    ```
+    
+    1. Now we get a result of all the items with more than 100. 
+
+    2. We can specify how these rows are ordered by using the Order By command. Then give it a column name.  
+    ```
+    SELECT *
+    FROM "Product"
+    WHERE "UnitsInStock" >= 100
+    ORDER BY "UnitsInStock"; 
+    ```
+
+    3. The results will show that they are ordered by that number, starting with the lowest to highest.
