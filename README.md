@@ -28,8 +28,8 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     A. SQL is just a statement that allows us to query data from our database.
 
     B. Example of a valid SQL statements:
-        1. `SELECT <columns> FROM <table> WHERE <column> = <value>;`
-        2. It acts like a search function. 
+    1. `SELECT <columns> FROM <table> WHERE <column> = <value>;`
+    2. It acts like a search function. 
         `SELECT email FROM users WHERE name = "Amber Pittman";`
     
     C. The capitalized words are SQL commands. Capitalization is convention. SQL statements ALWAYS start with a command. 
@@ -39,7 +39,8 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     E. The words in quotes are just values. 
     
     F. SQL statements ALWAYS end with a semicolon. This means that if our SQL command ends in a semicolon, we can actually split it up onto separate lines. Example: 
-    ```SELECT email 
+    ```
+    SELECT email 
     FROM users
     WHERE name = "Amber Pittman";```
 
