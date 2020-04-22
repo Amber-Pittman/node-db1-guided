@@ -17,14 +17,20 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 
 # Notes
 1. Relational Databases - Spreadsheets on Steroids
+   
     A. Collection of rows === a table
+   
     B. Each one of those rows === a record
 2. Database Features
+   
     A. Give names and data types to columns
+   
     B. Each row has a unique identifier (or primary key)
+   
     C. Columns can "link" to other columns in separate tables (foreign keys)
 3. Databases usually have more rows than columns.
 4. SQL - Structured Query Language. 
+   
     A. SQL is just a statement that allows us to query data from our database.
 
     B. Example of a valid SQL statements:
@@ -48,14 +54,20 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 # Code Along
 1. Open DB Browser for SQL Lite. 
     A. Click Open Database. Select the `northwind.db3` file. 
+    
     B. Click on the Execute SQL button, as we'll be working here. 
+    
     C. Type `SELECT CompanyName FROM Customer;`
+    
     D. Press the Play Button. 
+    
     E. You should see a list of Company Names. 
 2. What this first SQL statement does, is it sending it to the database.    
     A. It's telling the database that we want to see the Company Name in every row in the Customer table. 
+    
     B. It finds that data and return it back to us in the result.
 3. What if you wanted to see other information?
+    
     A. Go to the Browse Data tab.
     
     B. Click on Customer category table.
@@ -77,12 +89,13 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     `SELECT * FROM Customer;`
    
     B. This is probably not super practical, as we usually want to see specific data. 
-5. If we wanted to see all the customers in the US, we can use the WHERE command. 
-    `SELECT * FROM Customer WHERE Country = 'USA';`
+5. If we wanted to see all the customers in the US, we can use the WHERE command. `SELECT * FROM Customer WHERE Country = 'USA';`
+
     A. If you run that code, it will return all 13 customers in the US.
 
     B. Let's split it up for readability.
-    ```SELECT * 
+    ```
+    SELECT * 
     FROM Customer 
     WHERE Country = 'USA'; 
     ```
