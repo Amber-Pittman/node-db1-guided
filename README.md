@@ -115,3 +115,49 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     ```
 
     C. The results show 2 customers in Portland. 
+7. You can also specify more cities if you wanted to. 
+    
+    A. Example
+    ```
+    SELECT * 
+    FROM Customer 
+    WHERE City = 'Portland' 
+    OR City = 'London'; 
+    ```
+
+    B. Because these cities are in two different countries, we removed the country line. 
+8. You can see how this can be really useful for gaining insight into large data sets. Even if we had 10M customers, we could still run our statement and get the results very, very quickly. 
+9. Not only is SQL a valuable skill for programmers, it's also really valuable for anyone dealing with data on a really large scale. It's useful for a lot of different things - it's not just used in programming. 
+
+    A. Accountants
+    
+    B. Scientists
+    
+    C. MBAs
+    
+    D. Data Analysts
+    
+    E. Marketing Teams
+10. Anytime you're dealing with a large data set, knowing how to write SQL is very valuable.
+11. Go back to the Browser Data tab again. 
+    
+    A. Take a look at the Order table. 
+
+    B. You'll see over 16k orders in this file. 
+
+    C. Scenario: you have a customer that wants to check the date of when and order was shipped. You'll need the ID of the order and the Ship Date. How would you write a SQL statement for that?
+
+    ```
+    SELECT ShippedDate 
+    FROM Order 
+    WHERE Id = 19570; 
+    ```
+    1. The version above produces a syntax error. It comes down to quotes. SQL is very particular about its quotes. 
+    2. There can occasionally be conflicts between the SQL commands and the table names. 
+    3. In this case, the word Order is a valid SQL command that deals with sorting. Therefore, you will want to put it in quotes. 
+    4. Basically, if you have a table name that is the same as a command, you need to put it in quotes to differentiate. It should look like this:
+     ```
+    SELECT ShippedDate 
+    FROM 'Order' 
+    WHERE Id = 19570; 
+    ```
