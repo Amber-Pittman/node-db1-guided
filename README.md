@@ -21,6 +21,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     A. Collection of rows === a table
    
     B. Each one of those rows === a record
+
 2. Database Features
    
     A. Give names and data types to columns
@@ -28,7 +29,9 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     B. Each row has a unique identifier (or primary key)
    
     C. Columns can "link" to other columns in separate tables (foreign keys)
+
 3. Databases usually have more rows than columns.
+
 4. SQL - Structured Query Language. 
    
     A. SQL is just a statement that allows us to query data from our database.
@@ -63,11 +66,13 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     D. Press the Play Button. 
     
     E. You should see a list of Company Names. 
+
 2. What this first SQL statement does, is it sending it to the database.    
     
     A. It's telling the database that we want to see the Company Name in every row in the Customer table. 
     
     B. It finds that data and return it back to us in the result.
+
 3. What if you wanted to see other information?
     
     A. Go to the Browse Data tab.
@@ -86,12 +91,14 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     G. We can now see the City and Country of each Company. 
 
     H. We're essentially telling the database through SQL what we're wanting to see and what we want it to do. It returns a result to us of the Customer's Company Name, City, and Country. 
+
 4. What if we don't want to specify each column individually? What if we just want to see everything from the Customer table? 
    
     A. We can use the Wildcard (`*`). Example:
     `SELECT * FROM Customer;`
    
     B. This is probably not super practical, as we usually want to see specific data. 
+
 5. If we wanted to see all the customers in the US, we can use the WHERE command. `SELECT * FROM Customer WHERE Country = 'USA';`
 
     A. If you run that code, it will return all 13 customers in the US.
@@ -102,6 +109,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     FROM Customer 
     WHERE Country = 'USA'; 
     ```
+
 6. Let's filter it down even more. Maybe we want to see all the Customers from the US and Portland. 
 
     A. Let's add another command to where the city is Portland by using "and". 
@@ -115,6 +123,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     ```
 
     C. The results show 2 customers in Portland. 
+
 7. You can also specify more cities if you wanted to. 
     
     A. Example
@@ -126,7 +135,9 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     ```
 
     B. Because these cities are in two different countries, we removed the country line. 
+
 8. You can see how this can be really useful for gaining insight into large data sets. Even if we had 10M customers, we could still run our statement and get the results very, very quickly. 
+
 9. Not only is SQL a valuable skill for programmers, it's also really valuable for anyone dealing with data on a really large scale. It's useful for a lot of different things - it's not just used in programming. 
 
     A. Accountants
@@ -138,7 +149,9 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     D. Data Analysts
     
     E. Marketing Teams
+
 10. Anytime you're dealing with a large data set, knowing how to write SQL is very valuable.
+
 11. Go back to the Browser Data tab again. 
     
     A. Take a look at the Order table. 
@@ -162,12 +175,14 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     WHERE Id = 19570; 
     ```
     5. If you run the code with the quotes, your result should show the ShippedDate information on that one order. 
+
 12. Because of the issue with table names and SQL commands, it's good practice to wrap any of your values (such as the table names) in double quotes. String values can have single quotes. Numbers do not need to be wrapped in quotes.
     ```
     SELECT "ShippedDate"
     FROM "Order"
     WHERE Id = 19570; // the place where the number assigned would take single quotes if it were a string
     ```
+
 13. Instead of doing just a strict equality check, in our where statement, we can actually use other operators. For example, you can use greater than or less than symbols.
     
     A. Go back to Browse Data
@@ -194,3 +209,40 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     ```
 
     3. The results will show that they are ordered by that number, starting with the lowest to highest.
+
+    E. Maybe you want to limit your results to the top 3. 
+    ```
+    SELECT *
+    FROM "Product"
+    WHERE "UnitsInStock" >= 100
+    ORDER BY "UnitsInStock"
+    LIMIT 3; 
+    ```
+    * This might be useful if your query returns thousands of results and you only want to see a few of them.
+
+14. SQL is really flexible in how we query our data. 
+
+15. How to find the most expensive product in the products table?
+    ```
+    SELECT *
+    FROM "Product"
+    ORDER BY "UnitPrice"; 
+    ```
+
+    A. Perhaps you don't want to scroll all the way down to the bottom. You can change the statement. If you limit by 1, you get the cheapest product, so that won't work here. This happens because, by default, it sorts by ascending results. It would look like this:
+    ```
+    SELECT *
+    FROM "Product"
+    ORDER BY "UnitPrice" ASC // ASC is default. You don't necessarily need it
+    LIMIT 1; 
+    ```
+
+    B. Therefore, in order to get the most expensive item, you would specify descending, or DESC. 
+    ```
+    SELECT *
+    FROM "Product"
+    ORDER BY "UnitPrice" DESC
+    LIMIT 1; 
+    ```
+
+    C. We don't need WHERE here, because we are not filtering by any specific value. We're just seeing the single result based on the sort.
