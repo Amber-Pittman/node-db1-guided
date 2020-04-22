@@ -53,6 +53,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 
 # Code Along
 1. Open DB Browser for SQL Lite. 
+    
     A. Click Open Database. Select the `northwind.db3` file. 
     
     B. Click on the Execute SQL button, as we'll be working here. 
@@ -63,6 +64,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     
     E. You should see a list of Company Names. 
 2. What this first SQL statement does, is it sending it to the database.    
+    
     A. It's telling the database that we want to see the Company Name in every row in the Customer table. 
     
     B. It finds that data and return it back to us in the result.
@@ -85,6 +87,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 
     H. We're essentially telling the database through SQL what we're wanting to see and what we want it to do. It returns a result to us of the Customer's Company Name, City, and Country. 
 4. What if we don't want to specify each column individually? What if we just want to see everything from the Customer table? 
+   
     A. We can use the Wildcard (`*`). Example:
     `SELECT * FROM Customer;`
    
