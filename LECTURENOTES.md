@@ -365,6 +365,7 @@
     D. We can Delete it with DELETE FROM
 
 10. How do we run these commands from our JavaScript code? We've been running it in DB Browser. We can execute the SQL directly into the database... But how do we actually connect to the database from JavaScript and run these commands from JavaScript?
+    
     A. There are 3 different levels of abstraction that we can choose from in Javascript. When we say _abstraction_, we mean "code that you use without understanding what it does."
     1. **_No Abstraction_** - Write raw SQL statements and send them directly to the database
     2. **_ORM_** - Object Relational Mapper. It's a very high level of abstraction. 
