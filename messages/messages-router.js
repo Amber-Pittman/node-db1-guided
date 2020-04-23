@@ -57,7 +57,7 @@ router.get("/:id", async (req, res, next) => {
             // This way also returns a flat object result. 
         // const message = await db.first("*").from("messages").where("id", req.params.id)
 
-        // Side note: if you wanted to specify columns you would use an array:
+        // SIDE NOTE: if you wanted to specify columns you would use an array:
         // const message = await db.first(["title", "contents"]).from("messages").where("id", req.params.id)
 
         // We can shorten our message variable even more. 
@@ -78,6 +78,53 @@ router.get("/:id", async (req, res, next) => {
 //Create a row
 router.post("/", async (req, res, next) => {
     try {
+        // Since the database is going to automatically generate our ID, we just have to
+        // take the title and the contents from the request body and send those through
+        // the database. 
+
+        //1. Create a payload object variable
+        const payload = {
+            // Set the value of title to req.body.title
+            title: req.body.title,
+            // Set the value of contents to req.body.contents
+            contents: req.body.contents
+        }
+
+        // 2. Call await and insert the payload into messages
+            // Raw SQL Statement for Inserting New Data: 
+            // `INSERT INTO "messages" ("title", "contents") VALUES (<title>, <contents>);`
+        // const message = await db("messages").insert(payload)
+
+        // By default the .insert command returns an array of IDs here. That's because we
+            // can actually pass in multiple payloads at the same time, which is why we see a
+            // list of IDs as a response.
+        // What can we do to make this response a little bit more helpful? We can return the
+            // freshly added contents of that row. 
+            // A. After we insert it, let's make another request to the DB to actually
+                //  fetch the new row by inserting based on that ID. 
+            // B. Instead of .insert and assigning it to the message variable, this is going
+                // to be a list of IDs. We can just destructure, based on the first item
+                // by ID. So we get that new ID that was inserted into the row.
+            // C. We can use that by making another request to get the row data from Messages
+                // where the id is equal to id we have in the variable and .first(). That 
+                // should fetch our new row. Run insomnia again to confirm. 
+        const [id] = await db("messages").insert(payload)
+        const message = await db("messages").where("id", id).first()
+        // 3. Return it to the response
+        res.json(message)
+        // 4. Confirm by going into Insomnia. Create Post Messages request. 
+            // http://localhost:4000/messages
+            // A. Change Body to JSON
+            // B. Add in some text to the JSON body
+                // {
+                //     "title": "New Message",
+                //     "contents": "Some contents"
+                // }
+            // C. The result returns an array of IDs instead of your text. Go look at your DB.
+        // 5. Go to DB Browser. 
+            // Refresh messages table. 
+            // The new message is inserted. 
+        
         
     } catch(error) {
         next(error)
