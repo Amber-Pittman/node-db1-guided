@@ -414,3 +414,33 @@
     * Create a row
     * Update a row
     * Delete a row
+
+17. Order of creating database interaction code:
+    
+    A. Convert into an async function since we're dealing with promises.
+
+    B. You'll want a try/catch statement
+
+    C. Call await and then our query builder with db
+
+    D. Return it to the response
+
+    E. Confirm by going into Insomnia. Create Get Messages request.
+
+    F. Your code should look like this:
+    ```
+    const express = require("express")
+    const db = require("../data/config")
+
+    const router = express.Router()
+
+
+    router.get("/", async (req, res, next) => {
+        try {
+            const messages = await db.select("*").from("messages")
+            res.json(messages);
+        } catch(error) {
+            next(error)
+        }
+    })
+    ```

@@ -5,7 +5,7 @@ const router = express.Router()
 
 
 //Read everything from the database
-// 1. Convert into an async function since we'll be dealing with promises.
+// 1. Convert into an async function since we're dealing with promises.
 router.get("/", async (req, res, next) => {
     // 2. You'll want a try catch statement
     try {
