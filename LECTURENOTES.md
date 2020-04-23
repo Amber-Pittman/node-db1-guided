@@ -382,41 +382,47 @@
         * It's a really good middle-ground because it abstracts a lot of the database interactions away from us (like an ORM) but not quite to the extent that an ORM does. 
         * It still allows us to customize our SQL queries if we need to. We still kind of need to see how things are happening "under the hood."
         * This is what we're going to use from here on out to interact with our database. 
-        * The library we're going to use specifically is called [knexJS](https://knexjs.org/). If you look at the documentation, you will see that it has all kinds of functions in this library and some of them go hand in hand with SQL commands. 
-            * This library is not specific to SQLite. 
-            * It also works with POSTgres and MYSQL. 
-            * If you want to look at examples, make sure you change your option in the top right corner of the page to SQLite3.
 
-11. Install Knex and the driver for our database engine, SQLite3. 
+11. The library we're going to use specifically is called [knexJS](https://knexjs.org/). If you look at the documentation, you will see that it has all kinds of functions in this library and some of them go hand in hand with SQL commands. 
+    
+    A. This library is not specific to SQLite. 
+    
+    B. It also works with POSTgres and MYSQL. 
+    
+    C. If you want to look at examples, make sure you change your option in the top right corner of the page to SQLite3.
+    
+    D. Review this helpful [Knex Cheatsheet](https://devhints.io/knex). This is helpful if you're curious on how to do something specific with Knex and you don't want to dig through the documentation. 
+
+12. Install Knex and the driver for our database engine, SQLite3. 
 
     A. npm install knex --save
 
     B. npm install sqlite3
 
-12. Start the server in your terminal
+13. Start the server in your terminal
     * npm run server 
 
-13. We already have the Knex configuration set up. Knex has to connect to our database somehow, so we have to tell it where to find the database files are, how to connect to it, etc. We will learn how to do that later, for now, it's already set up for you. 
+14. We already have the Knex configuration set up. Knex has to connect to our database somehow, so we have to tell it where to find the database files are, how to connect to it, etc. We will learn how to do that later, for now, it's already set up for you. 
     * If you look in the knexfile.js file, you'll already see we're using the sqlite engine. We're telling it where our database file is.
 
-14. Open the messages-router file and then open Insomnia. Make a test GET request to make sure it's working. 
+15. Open the messages-router file and then open Insomnia. Make a test GET request to make sure it's working. 
     ```
     GET http://localhost:4000/
     ```
 
-15. In DB Browser, open the messages.db3 file. 
+16. In DB Browser, open the messages.db3 file. 
     * Click on Browse Data
     * Select the Messages table
     * You'll see each one has a title and some contents
 
-16. So now, let's just run down these CRUD endpoints in the messages-router file. We'll write the database interaction code that does what it's supposed to do for that specific endpoint. Should be able to:
+17. So now, let's just run down these CRUD endpoints in the messages-router file. We'll write the database interaction code that does what it's supposed to do for that specific endpoint. Should be able to:
     * Read everything from the database
     * Read a specific row
     * Create a row
     * Update a row
     * Delete a row
 
-17. Order of creating database interaction code:
+18. Order of creating database interaction code:
     
     A. Convert into an async function since we're dealing with promises.
 
