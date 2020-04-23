@@ -180,7 +180,28 @@ router.put("/:id", async (req, res, next) => {
 //Delete a row
 router.delete("/:id", async (req, res, next) => {
     try {
+        // 1. Call await
+        // `DELETE FROM "messages" WHERE "id" = ?;`
+        await db("messages").where("id", req.params.id).del()
         
+        // 2. Return it to the response
+            // If you wanted to let a user know it was deleted, return a 202 and .json without
+            // any content. 
+        // res.json(message)
+
+        // You could also return a 204. Successful but empty response. And then instead of 
+            // calling .json(), you would call .end() since we're not actually sending back any
+            // data. 
+        res.json(204).end()
+        // 3. Confirm by going into Insomnia. Create Delete Messages request. 
+            // http://localhost:4000/messages/14
+            // A. Change Body to No Body.
+            // B. The result returns a 204 code. 
+            // C. If you run the Get Messages request again, you will see that id 14 has
+                //  been deleted. 
+        // 4. Go to DB Browser. 
+            // Refresh messages table. 
+            // The message is deleted. 
     } catch(error) {
         next(error)
     }

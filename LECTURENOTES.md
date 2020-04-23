@@ -385,6 +385,7 @@
         * The library we're going to use specifically is called [knexJS](https://knexjs.org/). If you look at the documentation, you will see that it has all kinds of functions in this library and some of them go hand in hand with SQL commands. 
             * This library is not specific to SQLite. 
             * It also works with POSTgres and MYSQL. 
+            * If you want to look at examples, make sure you change your option in the top right corner of the page to SQLite3.
 
 11. Install Knex and the driver for our database engine, SQLite3. 
 
