@@ -55,6 +55,9 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     ```
 
 # Code Along
+### DQL
+#### Data Query Language (DQL): used to ask questions about the data stored in the database. The most commonly used SQL command by far is SELECT, and it falls in this category.
+
 1. Open DB Browser for SQL Lite. 
     
     A. Click Open Database. Select the `northwind.db3` file. 
@@ -246,3 +249,19 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     ```
 
     C. We don't need WHERE here, because we are not filtering by any specific value. We're just seeing the single result based on the sort.
+
+16. Reference [SQLite's documentation here] (https://www.sqlite.org/index.html)
+
+17. Really, the whole point of what we're doing so far is that we're learning how to work with large data sets. We're learning how to work with databases, talk to them, ask them questions, how to ask them to return data, etc. Eventually, we're going to write this syntax right into our JavaScript - right in our APIs - to work in our data. 
+
+    A. For example, if a new user signs up, we can run that SQL statement to save that user to the database. 
+
+    B. If a user logs in, we can run a statement to get their info from the database. Making sure they're passing in the correct username and password. 
+
+18. Now that we have the ability to work with these large data sets with code, we can interface with them easily with our backends. That was the basics of querying - the basics of DQL. There's not that much that goes into it, just a few commands to do specific things. 
+    
+
+### DML
+#### Data Manipulation Language (DML): used to manipulate the data stored in the database. Some examples are: INSERT, UPDATE , and DELETE.
+
+
