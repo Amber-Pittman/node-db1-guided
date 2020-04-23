@@ -41,7 +41,35 @@ router.get("/", async (req, res, next) => {
 //Read a specific row
 router.get("/:id", async (req, res, next) => {
     try {
+        // `SELECT "*" FROM "messages" WHERE "id" = <some value>;`
+        // http://localhost:4000/messages/1 --> Returns an array b/c it pulls everything
+            // that's just how SQL operates 
+        // Instead we can limit it with LIMIT 
+            // `SELECT "*" FROM "messages" WHERE "id" = <some value> LIMIT 1;`
+        // HOWEVER, it's going to return an array because it's a SELECT statement. To fix
+            // this, we can destructure it with [] around the message variable. 
+            // NOW, it's just a flat object. No longer in an array.
+        // const [message] = await db.select("*").from("messages").where("id", req.params.id).limit(1)
         
+        // There is another way.
+        // The new way: Remove the limit. Go back to select. Replace select with first. And
+            // remove the destructuring of message. 
+            // This way also returns a flat object result. 
+        // const message = await db.first("*").from("messages").where("id", req.params.id)
+
+        // Side note: if you wanted to specify columns you would use an array:
+        // const message = await db.first(["title", "contents"]).from("messages").where("id", req.params.id)
+
+        // We can shorten our message variable even more. 
+            // Instead of saying .from(), we can call db as a function and specify the table
+            // name right away. We can also leave out the wild card. So if we're not passing
+            // in anything to .first, it will default to a wild card.
+        // We can also rearrange it better for readability. 
+            // "Select everything from messages where the ID is equal to the params.id and
+                // get the first item."
+        const message = await db("messages").where("id", req.params.id).first()
+        res.json(message)  
+              
     } catch(error) {
         next(error)
     }
