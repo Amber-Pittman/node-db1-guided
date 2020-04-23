@@ -368,16 +368,27 @@
     
     A. There are 3 different levels of abstraction that we can choose from in Javascript. When we say _abstraction_, we mean "code that you use without understanding what it does."
     1. **_No Abstraction_** - Write raw SQL statements and send them directly to the database
+   
     2. **_ORM_** - Object Relational Mapper. It's a very high level of abstraction. 
         * A popular example of this is the popular JavaScript library, [Sequelize](https://sequelize.org/v5/). 
             * It abstracts all the database interactions behind JavaScript classes for us. 
             * Instead of creating a new row in your SQL statement, you create a new JavaScript class. And behind the scenes, it creates a database row. 
             * This can be really powerful and help you develop really quickly but ORMs like this don't provide a lot of flexibility.
             * They are very limited in what they can actually do. You **have** to abide by their rules, or you're going to run into problems.
+   
     3. **_Query Builder_** - a library that allows us to write SQL with JavaScript functions behind the scenes. 
         * Instead of the SQL statement `INSERT INTO table_name VALUES ();`, it just kind of abstracts that SQL with this code: `table.insert({//some object}).into("table_name")`.
         * It just abstracts it into JavaScript code. 
         * It's a really good middle-ground because it abstracts a lot of the database interactions away from us (like an ORM) but not quite to the extent that an ORM does. 
         * It still allows us to customize our SQL queries if we need to. We still kind of need to see how things are happening "under the hood."
         * This is what we're going to use from here on out to interact with our database. 
-        * The library we're going to use specifically is called [knexJS](https://knexjs.org/).
+        * The library we're going to use specifically is called [knexJS](https://knexjs.org/). If you look at the documentation, you will see that it has all kinds of functions in this library and some of them go hand in hand with SQL commands. 
+            * This library is not specific to SQLite. 
+            * It also works with POSTgres and MYSQL. 
+
+11. Install Knex and the driver for our database engine, SQLite3. 
+    A. npm install knex --save
+    B. npm install sqlite3
+
+12. Start the server in your terminal
+    * npm run server 
