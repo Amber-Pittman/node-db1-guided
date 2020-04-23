@@ -40,22 +40,38 @@ router.get("/", async (req, res, next) => {
 
 //Read a specific row
 router.get("/:id", async (req, res, next) => {
-
+    try {
+        
+    } catch(error) {
+        next(error)
+    }
 })
 
 //Create a row
 router.post("/", async (req, res, next) => {
-
+    try {
+        
+    } catch(error) {
+        next(error)
+    }
 })
 
 //Update a row
 router.put("/:id", async (req, res, next) => {
-
+    try {
+        
+    } catch(error) {
+        next(error)
+    }
 })
 
 //Delete a row
 router.delete("/:id", async (req, res, next) => {
-
+    try {
+        
+    } catch(error) {
+        next(error)
+    }
 })
 
 module.exports = router
