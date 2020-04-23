@@ -259,7 +259,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 
     C. We don't need WHERE here, because we are not filtering by any specific value. We're just seeing the single result based on the sort.
 
-16. Reference [SQLite's documentation here] (https://www.sqlite.org/index.html)
+16. Reference [SQLite's documentation here](https://www.sqlite.org/index.html)
 
 17. Really, the whole point of what we're doing so far is that we're learning how to work with large data sets. We're learning how to work with databases, talk to them, ask them questions, how to ask them to return data, etc. Eventually, we're going to write this syntax right into our JavaScript - right in our APIs - to work in our data. 
 
