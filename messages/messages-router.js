@@ -125,7 +125,6 @@ router.post("/", async (req, res, next) => {
             // Refresh messages table. 
             // The new message is inserted. 
         
-        
     } catch(error) {
         next(error)
     }
@@ -134,7 +133,45 @@ router.post("/", async (req, res, next) => {
 //Update a row
 router.put("/:id", async (req, res, next) => {
     try {
-        
+        //1. Create a payload object variable that we can send through to Knex
+        const payload = {
+            // Set the value of title to req.body.title
+            title: req.body.title,
+            // Set the value of contents to req.body.contents
+            contents: req.body.contents
+        }  
+        //2. Call await and then db messages where the ID is equal to the parameter, and
+            // call update, where we pass the payload
+            // !!!!! ALWAYS INCLUDE THE WHERE!!!!!
+            // `UPDATE "messages" SET "title" = ? AND "contents" = ? WHERE "id" = ?;`
+
+            // This is going to return the number of rows that were updated.  
+            // await db("messages").where("id", req.params.id).update(payload)
+             
+             //It's not super helpful because we already know that one row was updated. 
+             // Instead, let's call that specific message and return it like we did in 
+             // the post request. Get the updated message and return it.
+             // Const message calls await db messages where the ID is equal to the request
+                // id and .first()
+            // We know the id didn't change because we're not updating the id, so we can
+                // use it when we call the newly updated row. 
+                await db("messages").where("id", req.params.id).update(payload)
+                const updatedMessage = await db("messages").where("id", req.params.id).first()
+                
+                // 3. Return it to the response
+                res.json(updatedMessage)
+                // 4. Confirm by going into Insomnia. Create Put Messages request. 
+                    // http://localhost:4000/messages/1
+                    // A. Change Body to JSON
+                    // B. Add in some text to the JSON body
+                        // {
+                        //     "title": "Updated Message",
+                        //     "contents": "Updated contents"
+                        // }
+                    // C. The result returns the 1st message object. 
+                // 5. Go to DB Browser. 
+                    // Refresh messages table. 
+                    // The message is updated. 
     } catch(error) {
         next(error)
     }
