@@ -326,6 +326,7 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     E. This is useful in the event a customer/user needs to update their email address, among other things. 
 
 7. What would happen if we forgot the Where in the statement? Not having the Where specify where something needs to be updated, it will update EVERYTHING in the description of Categories to the new description. 
+    
     A. **This code overrides all descriptions!**
     ```
     UPDATE "Category"
@@ -338,6 +339,6 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 
     D. If you accidentally ran this update statement from your server, **THERE IS NO REVERT BUTTON!**
 
-    E. In DB Browser, there is a Revert Changes button, but it does not exist in our API. Just make sure you have a backup of your database and you __should__ be okay. 
+    E. In DB Browser, there is a Revert Changes button, but it does not exist in our API. Just make sure you have a backup of your database and you _should_ be okay. 
 
     F. This is where problems arise in SQL. If you've ever heard of SQL attacks, it's a form of vulnerability your app can have. A hacker could send up a SQL statement and if you're sending that SQL statement directly through your database without sanitizing it or without checking it or anything, the hacker could potential run an update command that just updates everything in your database to some random value. Your database will be gone. 
