@@ -387,8 +387,30 @@
             * It also works with POSTgres and MYSQL. 
 
 11. Install Knex and the driver for our database engine, SQLite3. 
+
     A. npm install knex --save
+
     B. npm install sqlite3
 
 12. Start the server in your terminal
     * npm run server 
+
+13. We already have the Knex configuration set up. Knex has to connect to our database somehow, so we have to tell it where to find the database files are, how to connect to it, etc. We will learn how to do that later, for now, it's already set up for you. 
+    * If you look in the knexfile.js file, you'll already see we're using the sqlite engine. We're telling it where our database file is.
+
+14. Open the messages-router file and then open Insomnia. Make a test GET request to make sure it's working. 
+    ```
+    GET http://localhost:4000/
+    ```
+
+15. In DB Browser, open the messages.db3 file. 
+    * Click on Browse Data
+    * Select the Messages table
+    * You'll see each one has a title and some contents
+
+16. So now, let's just run down these CRUD endpoints in the messages-router file. We'll write the database interaction code that does what it's supposed to do for that specific endpoint. Should be able to:
+    * Read everything from the database
+    * Read a specific row
+    * Create a row
+    * Update a row
+    * Delete a row

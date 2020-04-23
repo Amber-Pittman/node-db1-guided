@@ -3,23 +3,30 @@ const db = require("../data/config")
 
 const router = express.Router()
 
-router.get("/", (req, res, next) => {
+
+//Read everything from the database
+// 1. Convert into an async function since we'll be dealing with promises.
+router.get("/", async (req, res, next) => {
 
 })
 
-router.get("/:id", (req, res, next) => {
+//Read a specific row
+router.get("/:id", async (req, res, next) => {
 
 })
 
-router.post("/", (req, res, next) => {
+//Create a row
+router.post("/", async (req, res, next) => {
 
 })
 
-router.put("/:id", (req, res, next) => {
+//Update a row
+router.put("/:id", async (req, res, next) => {
 
 })
 
-router.delete("/:id", (req, res, next) => {
+//Delete a row
+router.delete("/:id", async (req, res, next) => {
 
 })
 
