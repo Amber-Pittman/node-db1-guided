@@ -63,6 +63,8 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 
     B. `UPDATE <table> SET <column> = <new value> WHERE <column> = <value>;`
 
+    C. `DELETE FROM <table> WHERE <column> = <value>;`
+
 # Code Along
 ### DQL
 #### Data Query Language (DQL): used to ask questions about the data stored in the database. The most commonly used SQL command by far is SELECT, and it falls in this category.
@@ -341,4 +343,30 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 
     E. In DB Browser, there is a Revert Changes button, but it does not exist in our API. Just make sure you have a backup of your database and you _should_ be okay. 
 
-    F. This is where problems arise in SQL. If you've ever heard of SQL attacks, it's a form of vulnerability your app can have. A hacker could send up a SQL statement and if you're sending that SQL statement directly through your database without sanitizing it or without checking it or anything, the hacker could potential run an update command that just updates everything in your database to some random value. Your database will be gone. 
+    F. This is where problems arise in SQL. If you've ever heard of SQL attacks, it's a form of vulnerability your app can have. A hacker could send up a SQL statement and if you're sending that SQL statement directly through your database without sanitizing it or without checking it or anything, the hacker could potentially run an update command that just updates everything in your database to some random value. Your database will be gone. 
+
+    * You have to be really careful about what you accept into your database, what commands you run, etc. 
+
+    * _With a lot of power, comes a lot of responsibility._ That mentality is found quite often in backend. 
+
+    * If you're in charge of setting up your infrastructure on your backends, always make sure you backup your database **multiple times** a day. AND **have a plan** for emergency rollbacks for this very situation.
+
+8. Let's talk about deleting from the database. We've inserted it, updated it, and now we want to delete from the category and give it a selector (the id, in this instance). That's it! It's a very straightforward query. 
+
+```
+--INSERT INTO "Category" ("CategoryName", "Description")
+--VALUES ('Frozen', 'Read-to-eat meals');
+
+--UPDATE "Category"
+--SET "Description" = 'Desserts and ready-to-eat meals'
+--WHERE "Id" = 9;
+
+DELETE FROM "Category"
+WHERE "Id" = 9;
+```
+
+* If you go back to Browse Data and take a look at Category, the Frozen category is gone. 
+
+* Definitely don't forget the WHERE statement here! If you forget it, you delete everything!!!
+
+* If you don't have a way to do an emergency rollback, plan to get fired. 
