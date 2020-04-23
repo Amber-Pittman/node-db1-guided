@@ -54,6 +54,15 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
     WHERE name = 'Amber Pittman';
     ```
 
+5. Data Definition Language (DQL)
+    * `SELECT <columns> FROM <table> WHERE <column> = <value>;`
+
+6. Data Manipulation Language (DML)
+    
+    A. `INSERT INTO <table> (<columns>) VALUES (<values>);`
+
+    B. `UPDATE <table> SET <column> = <new value> WHERE <column> = <value>;`
+
 # Code Along
 ### DQL
 #### Data Query Language (DQL): used to ask questions about the data stored in the database. The most commonly used SQL command by far is SELECT, and it falls in this category.
@@ -264,4 +273,71 @@ In this project we will cover the basics of `Structure Query Language (SQL)`, `R
 ### DML
 #### Data Manipulation Language (DML): used to manipulate the data stored in the database. Some examples are: INSERT, UPDATE , and DELETE.
 
+1. DML is very, very similar to the DQL; just uses different commands.
 
+2. The command you will see most often is INSERT and INSERT INTO. If we want to create a new row in our database, we would insert into the table, specify the column and provide some values. 
+
+3. We're just writing a sentence, giving it some commands, and giving it some data to work with. 
+
+4. What if you want to add a new category? 
+    A. Go back to our DB Browser
+
+    B. Browse Data
+    
+    C. Go to Category Tab
+
+    D. Currently, we have 8 different food categories. 
+
+    E. Let's insert our DML to insert a new category in Execute SQL. 
+    ```
+    INSERT INTO "Category" ("CategoryName", "Description")
+    VALUES ('Frozen', 'Read-to-eat meals');
+    ```
+
+    F. While the results don't show anything, the log says that it was created successfully. 
+
+    G. Go back to the Browse Data tab. You will see we have our new category row. The Id was automatically created. 
+
+    H. If we were calling this from JavaScript and we had an endpoint for `POST("/users")`, we could now call this Insert Into command and pass the values from the request body. We'd pass something like a username, an email address, or password for the table it's expecting. 
+
+5. To recap, we can query data with Select. We can insert data with Insert Into. What about updating existing data?
+    
+    * Still part of the DML, you can specify UPDATE. You can update a table name, then set some column name to some new value, and then you can give it a condition by using WHERE; Where some column equals some value. 
+
+6. Let's update our command to a different description. 
+
+    A. You'll notice that the id that was generated for Frozen was 9. We can use that when we are updating our data. 
+    
+    B. Side note: if you want to comment out something in your SQL statement, just use a double dash. 
+    ```
+    --INSERT INTO "Category" ("CategoryName", "Description")
+    --VALUES ('Frozen', 'Read-to-eat meals');
+    ```
+
+    C. Let's write our update statement. 
+    ```
+    UPDATE "Category"
+    SET "Description" = 'Desserts and ready-to-eat meals'
+    WHERE "Id" = 9;
+    ```
+
+    D. Submit it. Again, you won't see it in the results. But if you go to the Browse Data tab, you will see it updated the description of the Frozen category. 
+
+    E. This is useful in the event a customer/user needs to update their email address, among other things. 
+
+7. What would happen if we forgot the Where in the statement? Not having the Where specify where something needs to be updated, it will update EVERYTHING in the description of Categories to the new description. 
+    A. **This code overrides all descriptions!**
+    ```
+    UPDATE "Category"
+    SET "Description" = 'Desserts and ready-to-eat meals';
+    ```
+
+    B. **This is irreversible!** The only way to bring it back is if you have a copy of your database somewhere else. 
+
+    C. Our SQL is going to do EXACTLY what we tell it to do. It has no safeguards! So you have to be careful when writing these commands.  
+
+    D. If you accidentally ran this update statement from your server, **THERE IS NO REVERT BUTTON!**
+
+    E. In DB Browser, there is a Revert Changes button, but it does not exist in our API. Just make sure you have a backup of your database and you __should__ be okay. 
+
+    F. This is where problems arise in SQL. If you've ever heard of SQL attacks, it's a form of vulnerability your app can have. A hacker could send up a SQL statement and if you're sending that SQL statement directly through your database without sanitizing it or without checking it or anything, the hacker could potential run an update command that just updates everything in your database to some random value. Your database will be gone. 
